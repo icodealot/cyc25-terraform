@@ -13,7 +13,7 @@ provider "docker" {
 
 resource "docker_image" "frontend_image" {
   name         = "nginx"
-  keep_locally = false
+  keep_locally = true
 }
 
 resource "docker_container" "frontend_container" {
@@ -23,6 +23,23 @@ resource "docker_container" "frontend_container" {
   ports {
     internal = 80
     external = 8000
+  }
+
+  network_mode = "bridge"
+}
+
+resource "docker_image" "backend_image" {
+  name         = "nginx"
+  keep_locally = true
+}
+
+resource "docker_container" "backend_container" {
+  image = docker_image.backend_image.image_id
+  name  = "cyc_backend_2025"
+
+  ports {
+    internal = 80
+    external = 3001
   }
 
   network_mode = "bridge"
