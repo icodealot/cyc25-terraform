@@ -13,35 +13,33 @@ provider "docker" {
   host = "npipe:////.//pipe//docker_engine"
 }
 
-resource "docker_image" "frontend_image" {
-  name         = "nginx"
-  keep_locally = true
+data "docker_image" "frontend_image" {
+  name = "nginx"
 }
 
 resource "docker_container" "frontend_container" {
-  image = docker_image.frontend_image.image_id
+  image = data.docker_image.frontend_image.id
   name  = "cyc_frontend_2025"
 
   ports {
     internal = 80
-    external = 8000
+    external = 3001
   }
 
   network_mode = "bridge"
 }
 
-resource "docker_image" "backend_image" {
-  name         = "nginx"
-  keep_locally = true
+data "docker_image" "backend_image" {
+  name = "cyc-backend:latest"
 }
 
 resource "docker_container" "backend_container" {
-  image = docker_image.backend_image.image_id
+  image = data.docker_image.backend_image.id
   name  = "cyc_backend_2025"
 
   ports {
-    internal = 80
-    external = 3001
+    internal = 8000
+    external = 8000
   }
 
   network_mode = "bridge"
