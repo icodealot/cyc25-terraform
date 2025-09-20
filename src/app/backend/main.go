@@ -13,9 +13,9 @@ func main() {
 
 func hello(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	encoder := json.NewEncoder(w)
 	message := map[string]string{
 		"message": "Hello, Commit Your Code!",
 	}
+	encoder := json.NewEncoder(w)
 	encoder.Encode(message)
 }
