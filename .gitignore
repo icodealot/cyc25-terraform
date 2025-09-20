@@ -1,5 +1,6 @@
 .idea/**
 .terraform/**
+*.iml
 # This is for a demo so backing up the state in the repo, given each
 # example will alter the state and reset it, doesn't make sense.
 terraform.tfstate.backup
