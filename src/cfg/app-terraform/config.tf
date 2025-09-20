@@ -9,7 +9,13 @@ terraform {
   }
 }
 
+variable "docker_host" {
+  type = string
+  description = "Docker host to use for container operations"
+  default = "npipe:////.//pipe//docker_engine"
+}
+
 provider "docker" {
-  host = "npipe:////.//pipe//docker_engine"
+  host = var.docker_host
 }
 
