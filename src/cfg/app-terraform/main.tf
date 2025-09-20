@@ -12,4 +12,8 @@ resource "docker_container" "backend_container" {
   }
 
   network_mode = "bridge"
+
+  lifecycle {
+    ignore_changes = [ pid_mode, ulimit ]
+  }
 }
