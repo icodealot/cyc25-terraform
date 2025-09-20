@@ -1,19 +1,28 @@
-data "docker_image" "backend_image" {
-  name = "cyc-backend:latest"
+# For example:
+# terraform plan -var="stage=prod"
+
+variable "stage" {
+  type        = string
+  description = "Deployment stage (dev or prod)"
+  default     = "dev"
 }
 
-resource "docker_container" "backend_container" {
-  image = data.docker_image.backend_image.id
-  name  = "cyc_backend_2025-dev"
+locals {
+  service_port = var.stage == "dev" ? 8080 : 9090
+}
 
-  ports {
-    internal = 8000
-    external = 8080
-  }
+# A moved block can be added for a release and removed later
+# to let Terraform know about this refactor for example:
+# moved {
+#   from = docker_container.backend_container
+#   to = module.api_backend.docker_container.container
+# }
 
-  network_mode = "bridge"
+module "api_backend" {
+  source = "./modules/container"
 
-  lifecycle {
-    ignore_changes = [ pid_mode, ulimit ]
-  }
+  image_name    = "cyc-backend:latest"
+  name          = "cyc_backend_2025-${var.stage}"
+  internal_port = 8000
+  external_port = local.service_port
 }
