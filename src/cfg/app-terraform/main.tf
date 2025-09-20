@@ -4,7 +4,7 @@ data "docker_image" "backend_image" {
 
 resource "docker_container" "backend_container" {
   image = data.docker_image.backend_image.id
-  name  = "cyc_backend_2025"
+  name  = "cyc_backend_2025-dev"
 
   ports {
     internal = 8000
