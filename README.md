@@ -105,14 +105,28 @@ which should return output similar to:
 ```
 
 Note, `curl` and `jq` aren't strictly necessary but if you want to use
-them to test the endpoint you can install them as needed.
+them to test the endpoint install them as needed.
 
 ### 5. Explore branches for various demos
 
-The following demos / branches are available:
+If you pull down the entire repo and not just `main` the following demos / branches
+are available:
 
 - `main` : shows an example of creating a local docker container
 - `demo_locals` : shows an example of configuring local variables
 - `demo_vars` : shows an example of using variables and conditional expressions
 - `demo_modules` : shows an example of using modules to group resources
 - `demo_conditions` : shows an example of making resources conditionally created
+
+Most of the demos should work by starting from `main` having been applied. I recommend
+the following workflow using this repo.
+
+- Checkout `main`
+- `terraform plan` / `terraform apply`
+- Checkout `demo_xyz`
+- `terraform plan` / `terraform apply`
+- `terraform destroy`
+- Repeat all of the above as needed starting from a clean slate each time
+
+Doing this will show that most of the changes in each demo are "no-op" apart from
+the `moved` operations that tell Terraform a resource has a new address.
