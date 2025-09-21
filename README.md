@@ -109,7 +109,9 @@ them to test the endpoint you can install them as needed.
 
 ### 5. Explore branches for various demos
 
-The following demos / branches should be available:
+The following demos / branches are available:
 
 - `demo_locals` : shows an example of configuring local variables
 - `demo_vars` : shows an example of using variables and conditional expressions
+- `demo_modules` : shows an example of using modules to group resources
+- `demo_conditions` : shows an example of making resources conditionally created
