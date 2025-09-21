@@ -111,6 +111,7 @@ them to test the endpoint you can install them as needed.
 
 The following demos / branches are available:
 
+- `main` : shows an example of creating a local docker container
 - `demo_locals` : shows an example of configuring local variables
 - `demo_vars` : shows an example of using variables and conditional expressions
 - `demo_modules` : shows an example of using modules to group resources
