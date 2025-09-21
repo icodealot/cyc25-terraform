@@ -13,10 +13,10 @@ locals {
 
 # A moved block can be added for a release and removed later
 # to let Terraform know about this refactor for example:
-# moved {
-#   from = docker_container.backend_container
-#   to = module.api_backend.docker_container.container
-# }
+moved {
+  from = docker_container.backend_container
+  to = module.api_backend.docker_container.container
+}
 
 module "api_backend" {
   source = "./modules/container"
