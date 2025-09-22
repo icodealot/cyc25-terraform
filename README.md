@@ -1,12 +1,15 @@
 ## About the demo
 
 This repo contains various demos of using Terraform to illustrate
-concepts presented at CYC25.
+concepts presented at CYC25. All the demos are meant to be run
+locally using a local docker container runtime with Terraform
+installed locally.
 
 ## How to use this repo
 
 ### 1. Deal with prerequisites
-First install the pre-requisites mentioned above.
+
+First install the pre-requisites mentioned.
 
 - Terraform installed (1.10 or higher)
 - Docker Desktop, Podman, or similar installed (a docker runtime)
